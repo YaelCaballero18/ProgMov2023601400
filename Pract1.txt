@@ -1,0 +1,67 @@
+Tarea1 
+
+import java.time.LocalDate
+import java.time.Period
+import java.time.temporal.ChronoUnit
+import kotlin.system.exitProcess
+
+fun main(){
+
+    println("Que quieres hacer A) B) C) D) ")
+    val opcion = readLine()
+    when (opcion){
+        "a" -> suma()
+        "b" -> nombre()
+        "c" -> tiempovida()
+        "d" -> final()
+    }
+}
+
+fun suma(){
+    println("Ingresa un numero: ")
+    val numero1 = readLine()!!.toInt()
+
+    println("Ingresa otro numero: ")
+    val numero2 = readLine()!!.toInt()
+
+    println("Ingresa un ultimo numero numero: ")
+    val numero3 = readLine()!!.toInt()
+
+    val total = numero1+numero2+numero3
+    print("Ls suma de los numeros es: $total")
+}
+
+fun nombre(){
+    println("Ingresa tu nombre completo: ")
+    val nombre1 = readLine()!!.toInt()
+    print("tu nombre es: $nombre1")
+}
+
+fun tiempovida(){
+    println("Ingresa tu fecha de nacimiento (YYYY-MM-DD):")
+    val fechaNacimientoStr = readLine()
+    val fechaNacimiento = LocalDate.parse(fechaNacimientoStr)
+    val fechaActual = LocalDate.now()
+    val periodo = Period.between(fechaNacimiento, fechaActual)
+    val meses = periodo.years * 12 + periodo.months
+    val diasRestantes = periodo.days
+
+    val semanas = diasRestantes / 7
+    val dias = diasRestantes % 7
+
+    val horas = 24
+    val minutos = 60
+    val segundos = 60
+
+    println("Han pasado:")
+    println("$meses meses, $semanas semanas, $dias días, $horas horas, $minutos minutos, $segundos segundos")
+
+}
+
+fun final(){
+    println("Finalizando el programa...")
+    exitProcess(0)
+
+
+
+}
